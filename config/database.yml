@@ -1,0 +1,19 @@
+default: &default
+  host: localhost
+  adapter: sqlserver
+  dsn: Rails_DSN
+  port: 1433
+  username: RailsUser
+  password: 789546
+
+development:
+  <<: *default
+  database: rails_dev
+
+test:
+  <<: *default
+  database: rails_test
+
+production:
+  <<: *default
+  database: rails_prod
