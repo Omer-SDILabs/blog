@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  def hello
+  # def hello
     # render html: "What's going on $@%#$&$#%&^%#^&}!"
-  end
+  # end
   protect_from_forgery with: :exception
 end
