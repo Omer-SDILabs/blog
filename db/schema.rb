@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 20210329215453) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sysdiagrams", primary_key: "diagram_id", force: :cascade do |t|
+    t.string  "name",         limit: 128,        null: false
+    t.integer "principal_id",                    null: false
+    t.integer "version"
+    t.binary  "definition",   limit: 2147483647
+    t.index ["principal_id", "name"], name: "UK_principal_name", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
