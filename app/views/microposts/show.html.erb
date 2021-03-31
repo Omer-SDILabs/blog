@@ -1,14 +1,28 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @micropost.content %>
+<p id="notice">
+    <%= notice %>
 </p>
-
 <p>
-  <strong>User:</strong>
-  <%= @micropost.user_id %>
+    <strong>Content:</strong>
+    <%= @micropost.content %>
 </p>
-
+<p>
+    <strong>User:</strong>
+    <%= @micropost.user_id %>
+</p>
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+<div>
+    <strong>
+        <%= comment.user_name %></strong>
+    <br>
+    <p>
+        <%= comment.body %>
+    </p>
+    <p>
+        <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+</div>
+<% end %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
 <%= link_to 'Edit', edit_micropost_path(@micropost) %> |
 <%= link_to 'Back', microposts_path %>

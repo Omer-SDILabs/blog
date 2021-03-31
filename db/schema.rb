@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210329215453) do
+ActiveRecord::Schema.define(version: 20210331084734) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "user_name"
-    t.string   "body"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.text     "body",         limit: 2147483647
+    t.integer  "micropost_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["micropost_id"], name: "index_comments_on_micropost_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "microposts", force: :cascade do |t|
@@ -36,14 +38,6 @@ ActiveRecord::Schema.define(version: 20210329215453) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sysdiagrams", primary_key: "diagram_id", force: :cascade do |t|
-    t.string  "name",         limit: 128,        null: false
-    t.integer "principal_id",                    null: false
-    t.integer "version"
-    t.binary  "definition",   limit: 2147483647
-    t.index ["principal_id", "name"], name: "UK_principal_name", unique: true
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -51,5 +45,6 @@ ActiveRecord::Schema.define(version: 20210329215453) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "microposts"
+  add_foreign_key "comments", "users"
 end
