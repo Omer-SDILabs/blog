@@ -1,12 +1,16 @@
-<p>
+<h1>
     <strong>Content:</strong>
     <%= @micropost.content %>
-</p>
-<p>
+</h1>
+<h4>
     <strong>User:</strong>
     <%= @micropost.user_id %>
-</p>
-<h3>Comments</h3>
+</h4>
+<b>
+    <%= link_to 'Delete Post?', @idea, data: { confirm: 'Are you sure?' }, method: :delete %>
+</b>
+<hr />
+<h4>Comments</h4>
 <% @comments.each do |comment| %>
 <div>
     <strong>
@@ -20,6 +24,8 @@
     </p>
 </div>
 <% end %>
+<hr />
+<h4>New comment</h4>
 <%= render partial: 'comments/form', locals: { comment: @comment } %>
 <%= link_to 'Edit', edit_micropost_path(@micropost) %> |
 <%= link_to 'Back', microposts_path %>
