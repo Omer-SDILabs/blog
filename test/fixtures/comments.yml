@@ -4,10 +4,8 @@ one:
   user_name: MyString
   body: MyText
   micropost: one
-  user: one
 
 two:
   user_name: MyString
   body: MyText
   micropost: two
-  user: two

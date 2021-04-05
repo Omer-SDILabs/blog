@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20210405074325) do
+ActiveRecord::Schema.define(version: 20210405081726) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "user_name"
+    t.text     "body",         limit: 2147483647
+    t.integer  "micropost_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["micropost_id"], name: "index_comments_on_micropost_id"
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content",    limit: 2147483647
@@ -36,4 +45,5 @@ ActiveRecord::Schema.define(version: 20210405074325) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "microposts"
 end

@@ -8,15 +8,5 @@
   <%= @comment.body %>
 </p>
 
-<p>
-  <strong>Micropost:</strong>
-  <%= @comment.micropost %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @comment.user %>
-</p>
-
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>

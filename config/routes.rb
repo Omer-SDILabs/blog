@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   resources :comments
-  root 'static_pages#home'
+  devise_for :users
+  root 'microposts#index'
   get 'static_pages/home'
   get 'static_pages/help'
 
