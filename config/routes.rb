@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   resources :comments
   root 'static_pages#home'
   get 'static_pages/home'
   get 'static_pages/help'
 
   resources :microposts
-  resources :users
 end

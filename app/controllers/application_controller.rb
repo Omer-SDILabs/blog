@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  # def hello
-    # render html: "What's going on $@%#$&$#%&^%#^&}!"
-  # end
+  before_action :authenticate_user!
   protect_from_forgery with: :exception
 end

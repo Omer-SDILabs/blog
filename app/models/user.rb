@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :microposts
-  validates :name, presence: true
-  # validates :email, presence: true
-  validates :email, presence: true, 
-            uniqueness: { case_sensitive: false },
-            length: { minimum: 4, maximum: 254 }    
+  has_many :comments
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :recoverable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+    :rememberable, :validatable
 end
